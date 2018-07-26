@@ -1,0 +1,11 @@
+{
+    "css/frappe_flatpickr.min.css": [
+        "public/css/flatpickr.css",
+        "public/css/flatpickr_theme.css"
+    ],
+    "js/frappe_flatpickr.min.js": [
+        "public/js/flatpickr.js",
+        "public/js/date.js",
+        "public/js/datetime.js"
+    ]
+}

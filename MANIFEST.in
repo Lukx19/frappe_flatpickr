@@ -1,0 +1,18 @@
+include MANIFEST.in
+include requirements.txt
+include *.json
+include *.md
+include *.py
+include *.txt
+recursive-include frappe_flatpickr *.css
+recursive-include frappe_flatpickr *.csv
+recursive-include frappe_flatpickr *.html
+recursive-include frappe_flatpickr *.ico
+recursive-include frappe_flatpickr *.js
+recursive-include frappe_flatpickr *.json
+recursive-include frappe_flatpickr *.md
+recursive-include frappe_flatpickr *.png
+recursive-include frappe_flatpickr *.py
+recursive-include frappe_flatpickr *.svg
+recursive-include frappe_flatpickr *.txt
+recursive-exclude frappe_flatpickr *.pyc
