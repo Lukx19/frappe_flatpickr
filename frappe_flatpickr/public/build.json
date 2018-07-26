@@ -6,6 +6,7 @@
     "js/frappe_flatpickr.min.js": [
         "public/js/flatpickr.js",
         "public/js/date.js",
-        "public/js/datetime.js"
+        "public/js/datetime.js",
+        "public/js/time.js"
     ]
 }
