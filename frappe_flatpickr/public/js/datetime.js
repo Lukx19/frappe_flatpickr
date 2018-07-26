@@ -1,4 +1,4 @@
-frappe.provide("frappe.ui.form.datetime");
+// frappe.provide("frappe.ui.form.datetime");
 
 
 frappe.ui.form.ControlDatetime = frappe.ui.form.ControlDate.extend({
