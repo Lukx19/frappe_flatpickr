@@ -11,6 +11,9 @@ frappe.ui.form.ControlTime = frappe.ui.form.ControlData.extend({
             'dateFormat': "H:i:S",
             'disableMobile': false,
         }
+        let language = frappe.boot.user.language || frappe.boot.lang
+        this.flatpickr_config = flatpickr.switch_locale(this.flatpickr_config, language)
+
         this.flatpickr_init = true
     },
 

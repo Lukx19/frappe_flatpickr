@@ -3,6 +3,8 @@ frappe.ui.form.ControlDate = frappe.ui.form.ControlData.extend({
     make_input: function () {
         this._super();
         this.flatpickr_config = this.create_configuration()
+        let language = frappe.boot.user.language || frappe.boot.lang
+        this.flatpickr_config = flatpickr.switch_locale(this.flatpickr_config, language)
         this.flatpickr_init = true
 
     },

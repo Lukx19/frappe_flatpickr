@@ -3,6 +3,7 @@
         "public/css/flatpickr_theme.css"
     ],
     "js/frappe_flatpickr.min.js": [
+        "public/js/flatpickr_locale.js",
         "public/js/date.js",
         "public/js/datetime.js",
         "public/js/time.js"
