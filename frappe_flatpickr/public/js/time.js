@@ -1,5 +1,3 @@
-// frappe.provide("frappe.ui.form.time");
-
 
 frappe.ui.form.ControlTime = frappe.ui.form.ControlData.extend({
     make_input: function () {

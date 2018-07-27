@@ -15,8 +15,11 @@ app_license = "MIT"
 # ------------------
 
 # include js, css files in header of desk.html
-app_include_css = "/assets/css/frappe_flatpickr.min.css"
-app_include_js = "/assets/js/frappe_flatpickr.min.js"
+app_include_css = "assets/css/frappe_flatpickr.min.css"
+app_include_js =  [
+                    "assets/frappe_flatpickr/js/flatpickr.js",
+                    "assets/js/frappe_flatpickr.min.js"
+                 ]
 
 # include js, css files in header of web template
 # web_include_css = "/assets/frappe_flatpickr/css/frappe_flatpickr.css"
