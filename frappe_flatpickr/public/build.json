@@ -1,6 +1,6 @@
 {
     "css/frappe_flatpickr.min.css": [
-        "public/css/flatpickr_theme.css"
+        "public/css/flatpickr.css"
     ],
     "js/frappe_flatpickr.min.js": [
         "public/js/flatpickr_locale.js",
