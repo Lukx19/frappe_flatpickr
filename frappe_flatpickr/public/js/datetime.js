@@ -1,17 +1,15 @@
 
 frappe.ui.form.ControlDatetime = frappe.ui.form.ControlDate.extend({
-    make_input: function () {
-        this._super();
-        $.extend(this.flatpickr_config, {
+    modify_configuration(config){
+         $.extend(config, {
             'time_24hr': true,
             'enableTime': true,
             'enableSeconds': false
 
         });
-        this.flatpickr_config.dateFormat = this.flatpickr_config.dateFormat + " H:i:S"
+        config.dateFormat = config.dateFormat + " H:i:S"
+        return config
     },
-
-
     set_description: function () {
 
         const { description } = this.df;

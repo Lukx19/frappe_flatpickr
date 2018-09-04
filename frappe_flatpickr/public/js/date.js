@@ -3,14 +3,18 @@ frappe.ui.form.ControlDate = frappe.ui.form.ControlData.extend({
     make_input: function () {
         this._super();
         this.flatpickr_config = this.create_configuration()
+        this.flatpickr_config = this.modify_configuration(this.flatpickr_config)
+
         let language = frappe.boot.user.language || frappe.boot.lang
         this.flatpickr_config = flatpickr.switch_locale(this.flatpickr_config, language)
-        this.flatpickr_init = true
 
+        this.fp = $(this.$input).flatpickr(this.flatpickr_config);
+        // this.fp.mobileFormatStr = this.flatpickr_config.dateFormat
+        console.log(this.fp)
     },
 
     create_configuration: function () {
-
+        console.log("config")
         let sysdefaults = frappe.boot.sysdefaults;
         let date_format = sysdefaults && sysdefaults.date_format
             ? sysdefaults.date_format : 'yyyy-mm-dd';
@@ -21,22 +25,25 @@ frappe.ui.form.ControlDate = frappe.ui.form.ControlData.extend({
             'allowInput': true,
             'dateFormat': date_format,
             'disableMobile': false,
+            "defaultDate": frappe.datetime.str_to_user(this.get_current_date()),
         }
+    },
+    modify_configuration: function (config) {
+        return config
     },
     get_current_date: function () {
         return frappe.datetime.now_date(true);
     },
     set_formatted_input: function (value) {
-        if (this.flatpickr_init) {
-            if (value) {
-                this.flatpickr_config.defaultDate = frappe.datetime.str_to_user(value)
-            } else {
-                this.flatpickr_config.defaultDate = frappe.datetime.str_to_user(this.get_current_date())
-            }
-            $(this.$input).flatpickr(this.flatpickr_config);
-            this.flatpickr_init = false;
-        }
+        console.log("set_formatted_input")
+
+        console.log("before super value" + $(this.$input).val())
         this._super(value);
+        if (this.get_input_value()) {
+            console.log("jumping")
+            this.fp.setDate(this.get_input_value())
+        }
+        console.log("after super value" + $(this.$input).val())
     },
     parse: function (value) {
         if (value) {
