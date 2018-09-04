@@ -9,12 +9,10 @@ frappe.ui.form.ControlDate = frappe.ui.form.ControlData.extend({
         this.flatpickr_config = flatpickr.switch_locale(this.flatpickr_config, language)
 
         this.fp = $(this.$input).flatpickr(this.flatpickr_config);
-        // this.fp.mobileFormatStr = this.flatpickr_config.dateFormat
-        console.log(this.fp)
     },
 
     create_configuration: function () {
-        console.log("config")
+        // console.log("config")
         let sysdefaults = frappe.boot.sysdefaults;
         let date_format = sysdefaults && sysdefaults.date_format
             ? sysdefaults.date_format : 'yyyy-mm-dd';
@@ -35,15 +33,14 @@ frappe.ui.form.ControlDate = frappe.ui.form.ControlData.extend({
         return frappe.datetime.now_date(true);
     },
     set_formatted_input: function (value) {
-        console.log("set_formatted_input")
+        // console.log("set_formatted_input")
 
-        console.log("before super value" + $(this.$input).val())
+        // console.log("before super value" + $(this.$input).val())
         this._super(value);
         if (this.get_input_value()) {
-            console.log("jumping")
-            this.fp.setDate(this.get_input_value())
+            this.fp.setDate(this.get_input_value(), false, this.flatpickr_config.dateFormat)
         }
-        console.log("after super value" + $(this.$input).val())
+        // console.log("after super value" + $(this.$input).val())
     },
     parse: function (value) {
         if (value) {
