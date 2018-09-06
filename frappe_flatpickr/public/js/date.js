@@ -1,4 +1,3 @@
-
 frappe.ui.form.ControlDate = frappe.ui.form.ControlData.extend({
     make_input: function () {
         this._super();
@@ -7,8 +6,14 @@ frappe.ui.form.ControlDate = frappe.ui.form.ControlData.extend({
 
         let language = frappe.boot.user.language || frappe.boot.lang
         this.flatpickr_config = flatpickr.switch_locale(this.flatpickr_config, language)
-
+        // originates from flatpickr implementation. Change this line when this implementation changes
+        let isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+            navigator.userAgent)
+        if (!isMobile) {
+            this.flatpickr_config.defaultDate = this.get_current_date()
+        }
         this.fp = $(this.$input).flatpickr(this.flatpickr_config);
+        // console.log(this.fp)
     },
 
     create_configuration: function () {
@@ -23,7 +28,6 @@ frappe.ui.form.ControlDate = frappe.ui.form.ControlData.extend({
             'allowInput': true,
             'dateFormat': date_format,
             'disableMobile': false,
-            "defaultDate": frappe.datetime.str_to_user(this.get_current_date()),
         }
     },
     modify_configuration: function (config) {
